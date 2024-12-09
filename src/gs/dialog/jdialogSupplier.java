@@ -30,6 +30,7 @@ public modelSupplier ms = new modelSupplier();
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         scrollPaneWin111 = new gs.scroll.win11.ScrollPaneWin11();
         tableSup = new gs.component.Table();
         btnCari = new javax.swing.JTextField();
@@ -47,16 +48,27 @@ public modelSupplier ms = new modelSupplier();
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PILIH SALAH SATU SUPPPLIER");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Close Window.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -146,6 +158,7 @@ public modelSupplier ms = new modelSupplier();
 
         ms.setKode_supplier(tableSup.getModel().getValueAt(row, 1).toString());
         ms.setNama_supplier(tableSup.getModel().getValueAt(row, 2).toString());
+        ms.setAlamat(tableSup.getModel().getValueAt(row, 3).toString());
         dispose();
     }//GEN-LAST:event_tableSupMouseClicked
 
@@ -158,9 +171,13 @@ public modelSupplier ms = new modelSupplier();
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyTyped
-        String sqlPencarian = "select * from tb_gudang where nama_gudang like '%"+btnCari.getText()+"%'";
+        String sqlPencarian = "select * from tb_supplier where nama_supplier like '%"+btnCari.getText()+"%'";
         pencarian(sqlPencarian);
     }//GEN-LAST:event_btnCariKeyTyped
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,6 +225,7 @@ public modelSupplier ms = new modelSupplier();
     private javax.swing.JTextField btnCari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;
     private gs.scroll.win11.ScrollPaneWin11 scrollPaneWin111;
@@ -219,7 +237,7 @@ public modelSupplier ms = new modelSupplier();
     }
 
     private void loadDataSupplier() {
-       Object[] Baris = {"No","Kode Supplier","Nama Supplier"};
+       Object[] Baris = {"No","Kode Supplier","Nama Supplier","Alamat"};
         tabmode = new DefaultTableModel(null, Baris);
         tableSup.setModel(tabmode);
         String sql = "SELECT * FROM tb_supplier ORDER BY kode_supplier ASC;";
@@ -229,7 +247,8 @@ public modelSupplier ms = new modelSupplier();
             while (hasil.next()){
                 String a = hasil.getString("kode_supplier");
                 String b = hasil.getString("nama_supplier");
-                String[] data = {"",a,b};
+                String c = hasil.getString("alamat_supplier");
+                String[] data = {"",a,b,c};
                 tabmode.addRow(data);
                 noTable();
             }

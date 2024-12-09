@@ -55,9 +55,6 @@ private DefaultTableModel tabmode; //membuat table mode
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tKeterangan = new javax.swing.JTextArea();
         tNamaSupplier = new javax.swing.JTextField();
         tkodeObat = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
@@ -67,6 +64,8 @@ private DefaultTableModel tabmode; //membuat table mode
         jLabel8 = new javax.swing.JLabel();
         btnTambah3 = new rojerusan.RSMaterialButtonRectangle();
         tglMasuk = new javax.swing.JLabel();
+        btnPilihTanggalexp = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -123,9 +122,11 @@ private DefaultTableModel tabmode; //membuat table mode
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Form Tampil Transaksi Obat Masuk");
+        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 102, 102)));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Search Folder.png"))); // NOI18N
 
@@ -174,9 +175,8 @@ private DefaultTableModel tabmode; //membuat table mode
         tampilPanelLayout.setVerticalGroup(
             tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tampilPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,8 +184,8 @@ private DefaultTableModel tabmode; //membuat table mode
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCari, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -231,14 +231,6 @@ private DefaultTableModel tabmode; //membuat table mode
 
         jLabel5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel5.setText("Jumlah");
-
-        jLabel6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel6.setText("Keterangan");
-
-        tKeterangan.setColumns(20);
-        tKeterangan.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tKeterangan.setRows(5);
-        jScrollPane1.setViewportView(tKeterangan);
 
         tNamaSupplier.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tNamaSupplier.setPreferredSize(new java.awt.Dimension(7, 20));
@@ -297,6 +289,25 @@ private DefaultTableModel tabmode; //membuat table mode
 
         tglMasuk.setFont(new java.awt.Font("Poppins", 2, 12)); // NOI18N
 
+        btnPilihTanggalexp.setBackground(new java.awt.Color(255, 255, 255));
+        btnPilihTanggalexp.setToolTipText("Pilih Tanggal");
+        btnPilihTanggalexp.setDateFormatString("dd-MM-yyyy");
+        btnPilihTanggalexp.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        btnPilihTanggalexp.setMaximumSize(new java.awt.Dimension(2147400000, 2147400000));
+        btnPilihTanggalexp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPilihTanggalexpMouseClicked(evt);
+            }
+        });
+        btnPilihTanggalexp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPilihTanggalexpKeyPressed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel6.setText("Tgl Expired");
+
         javax.swing.GroupLayout tambahPanelLayout = new javax.swing.GroupLayout(tambahPanel);
         tambahPanel.setLayout(tambahPanelLayout);
         tambahPanelLayout.setHorizontalGroup(
@@ -305,7 +316,12 @@ private DefaultTableModel tabmode; //membuat table mode
                 .addGap(25, 25, 25)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tambahPanelLayout.createSequentialGroup()
-                        .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPilihTanggalexp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(tambahPanelLayout.createSequentialGroup()
+                        .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tambahPanelLayout.createSequentialGroup()
                         .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,8 +332,8 @@ private DefaultTableModel tabmode; //membuat table mode
                                 .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                             .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(11, 11, 11)
                         .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tambahPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,8 +342,7 @@ private DefaultTableModel tabmode; //membuat table mode
                                     .addComponent(kodeMasuk, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tkodeObat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tNamaSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)))
+                                    .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(tambahPanelLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(tglMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -380,8 +395,8 @@ private DefaultTableModel tabmode; //membuat table mode
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addComponent(btnPilihTanggalexp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         mainPanel.add(tambahPanel, "card3");
@@ -516,6 +531,14 @@ private DefaultTableModel tabmode; //membuat table mode
         tNamaSupplier.setText(dialog.ms.getNama_supplier());
     }//GEN-LAST:event_btnTambah3ActionPerformed
 
+    private void btnPilihTanggalexpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPilihTanggalexpMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalexpMouseClicked
+
+    private void btnPilihTanggalexpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPilihTanggalexpKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalexpKeyPressed
+
     private void ubahDataTabel() {
         tambahPanel.setVisible(false);
         tampilPanel.setVisible(false);
@@ -531,10 +554,12 @@ private DefaultTableModel tabmode; //membuat table mode
         String h = tabmode.getValueAt(bar, 7).toString();
        
 
-        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         Date dateValue = null;
+        Date dateValueexp = null;
         try{
             dateValue = date.parse((String)tableIn.getValueAt(bar, 1));
+            dateValueexp = date.parse((String)tableIn.getValueAt(bar, 7));
         } catch (ParseException ex){
             Logger.getLogger(dataObat.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -545,7 +570,7 @@ private DefaultTableModel tabmode; //membuat table mode
         tnamaObat.setText(e);
         tNamaSupplier.setText(f);
         tJumlah.setText(g);
-        tKeterangan.setText(h);
+        btnPilihTanggalexp.setDate(dateValueexp);
         
         
         
@@ -555,7 +580,7 @@ private DefaultTableModel tabmode; //membuat table mode
     }
 
     private void dataTableIn() {
-        Object[] Baris = {"No","Tanggal","Kode Obat Masuk","Kode Obat","Nama Obat","Supplier Obat","Jumlah","Keterangan"};
+        Object[] Baris = {"No","Tanggal","Kode Obat Masuk","Kode Obat","Nama Obat","Supplier Obat","Jumlah","Expired"};
         tabmode = new DefaultTableModel(null, Baris);
         tableIn.setModel(tabmode);
         String sql = "select * from tb_obat_masuk order by id_obatmasuk asc";
@@ -569,7 +594,7 @@ private DefaultTableModel tabmode; //membuat table mode
                 String c = hasil.getString("nama_obat");
                 String d = hasil.getString("supplier");
                 String jumlah = hasil.getString("jumlah");
-                String keterangan = hasil.getString("keterangan");
+                String keterangan = hasil.getString("tglExp");
                 String[] data = {"",tanggal,a,b,c,d,jumlah,keterangan};
                 tabmode.addRow(data);
                 noTable();
@@ -597,7 +622,7 @@ private DefaultTableModel tabmode; //membuat table mode
         tnamaObat.setText("");
         tNamaSupplier.setText("");
         tJumlah.setText("");
-        tKeterangan.setText("");
+        btnPilihTanggalexp.setDate(null);
     }
     
     private void idAuto() {
@@ -654,10 +679,13 @@ private DefaultTableModel tabmode; //membuat table mode
     }
      
       private void perbaruiData() {
-        String sql = "UPDATE tb_obat_masuk SET tanggal=?,kode_obat=?,nama_obat=?,supplier=?,jumlah=?,keterangan=? WHERE id_obatMasuk='"+kodeMasuk.getText()+"'";
-        String tampilan = "dd-MM-yyyy";
+        String sql = "UPDATE tb_obat_masuk SET tanggal=?,kode_obat=?,nama_obat=?,supplier=?,jumlah=?,tglExp=? WHERE id_obatMasuk='"+kodeMasuk.getText()+"'";
+        String sqlUpdate = "UPDATE tb_obat SET jumlah = jumlah + ? WHERE kode_obat = ?";
+        String tampilan = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
         String tanggal = String.valueOf(fm.format(new Date()));
+        String tglexp = String.valueOf(fm.format(btnPilihTanggalexp.getDate()));
+        
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tanggal.toString());
@@ -665,7 +693,7 @@ private DefaultTableModel tabmode; //membuat table mode
             stat.setString(3, tnamaObat.getText());
             stat.setString(4, tNamaSupplier.getText());
             stat.setString(5, tJumlah.getText());
-            stat.setString(6, tKeterangan.getText());
+            stat.setString(6, tglexp.toString());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
             
@@ -680,39 +708,65 @@ private DefaultTableModel tabmode; //membuat table mode
     }
       
       private void simpanData() {
-      if(kodeMasuk.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Kode Masuk tidak boleh kosong");
-        } else if (tkodeObat.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "kode Obat masuk tidak boleh kosong");
-        } else if (tnamaObat.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Nama Obat Masuk tidak boleh kosong");
-        } else if (tNamaSupplier.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Nama Supplier obat tidak boleh kosong");
-        }else if (tJumlah.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Jumlah Obat Masuk tidak boleh kosong");
-        }
-        
-        else {
-        String sql = "insert into tb_obat_masuk values (?,?,?,?,?,?,?)";
-        
+//      
+        if(kodeMasuk.getText().equals("")){
+    JOptionPane.showMessageDialog(null, "Kode Masuk tidak boleh kosong");
+} else if (tkodeObat.getText().equals("")){
+    JOptionPane.showMessageDialog(null, "Kode Obat masuk tidak boleh kosong");
+} else if (tnamaObat.getText().equals("")){
+    JOptionPane.showMessageDialog(null, "Nama Obat Masuk tidak boleh kosong");
+} else if (tNamaSupplier.getText().equals("")){
+    JOptionPane.showMessageDialog(null, "Nama Supplier obat tidak boleh kosong");
+} else if (tJumlah.getText().equals("")){
+    JOptionPane.showMessageDialog(null, "Jumlah Obat Masuk tidak boleh kosong");
+} else {
+    String sqlInsert = "INSERT INTO tb_obat_masuk VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String sqlUpdate = "UPDATE tb_obat SET jumlah = jumlah + ? WHERE kode_obat = ?";
+    String tampilan = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(tampilan);
+        btnPilihTanggalexp.setDate(new Date());
+        String tglexp = String.valueOf(fm.format(btnPilihTanggalexp.getDate()));
+    try {
+        conn.setAutoCommit(false); // Begin transaction
+
+        // Insert data into tb_obat_masuk
+        PreparedStatement statInsert = conn.prepareStatement(sqlInsert);
+        statInsert.setString(1, tglMasuk.getText());
+        statInsert.setString(2, kodeMasuk.getText());
+        statInsert.setString(3, tkodeObat.getText());
+        statInsert.setString(4, tnamaObat.getText());
+        statInsert.setString(5, tNamaSupplier.getText());
+        statInsert.setString(6, tJumlah.getText());
+        statInsert.setString(7, tglexp.toString());
+        statInsert.executeUpdate();
+
+        // Update jumlah in tb_obat
+        PreparedStatement statUpdate = conn.prepareStatement(sqlUpdate);
+        statUpdate.setInt(1, Integer.parseInt(tJumlah.getText()));
+        statUpdate.setString(2, tkodeObat.getText());
+        statUpdate.executeUpdate();
+
+        conn.commit(); // Commit transaction
+        JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+
+        resetForm();
+        dataTableIn();
+    } catch (SQLException e) {
         try {
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, tglMasuk.getText());
-            stat.setString(2, kodeMasuk.getText());
-            stat.setString(3, tkodeObat.getText());
-            stat.setString(4, tnamaObat.getText());
-            stat.setString(5, tNamaSupplier.getText());
-            stat.setString(6, tJumlah.getText());
-            stat.setString(7, tKeterangan.getText());
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan");
-            //            String refresh = "select * from tb_barang";
-            resetForm();
-            dataTableIn();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan"+e);
+            conn.rollback(); // Rollback transaction in case of error
+            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan: " + e);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saat rollback: " + ex);
         }
+    } finally {
+        try {
+            conn.setAutoCommit(true); // Reset auto-commit mode
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error mengatur ulang auto-commit: " + ex);
         }
+    }
+}
+
     }
       
       private void pencarian(String sqlPencarian) {
@@ -776,6 +830,7 @@ private DefaultTableModel tabmode; //membuat table mode
     private rojerusan.RSMaterialButtonRectangle btnBatal1;
     private javax.swing.JTextField btnCari;
     private rojerusan.RSMaterialButtonRectangle btnHapus;
+    private com.toedter.calendar.JDateChooser btnPilihTanggalexp;
     private rojerusan.RSMaterialButtonRectangle btnTambah;
     private rojerusan.RSMaterialButtonRectangle btnTambah1;
     private rojerusan.RSMaterialButtonRectangle btnTambah2;
@@ -789,13 +844,11 @@ private DefaultTableModel tabmode; //membuat table mode
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
     private javax.swing.JLabel kodeMasuk;
     private javax.swing.JPanel mainPanel;
     private gs.scroll.win11.ScrollPaneWin11 scrollPaneWin111;
     public javax.swing.JTextField tJumlah;
-    private javax.swing.JTextArea tKeterangan;
     public javax.swing.JTextField tNamaSupplier;
     private gs.component.Table tableIn;
     private javax.swing.JPanel tambahPanel;

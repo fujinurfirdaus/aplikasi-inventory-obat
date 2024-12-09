@@ -9,6 +9,15 @@ public class modelSupplier {
     private String kode_supplier;
     private String nama_supplier;
 
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+    private String alamat;
+
     public String getKode_supplier() {
         return kode_supplier;
     }

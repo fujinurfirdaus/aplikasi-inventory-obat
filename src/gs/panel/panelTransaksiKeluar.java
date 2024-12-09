@@ -2,7 +2,7 @@
 package gs.panel;
 
 import gs.component.dataObat;
-import gs.dialog.jdialogGudang;
+import gs.dialog.jdialogPoli;
 import gs.dialog.jdialogObat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,7 +59,7 @@ private DefaultTableModel tabmode; //membuat table mode
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tKeterangan = new javax.swing.JTextArea();
-        tNamaGudang = new javax.swing.JTextField();
+        tNamaPoli = new javax.swing.JTextField();
         tkodeObat = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
         btnTambah2 = new rojerusan.RSMaterialButtonRectangle();
@@ -68,6 +68,8 @@ private DefaultTableModel tabmode; //membuat table mode
         jLabel8 = new javax.swing.JLabel();
         btnTambah3 = new rojerusan.RSMaterialButtonRectangle();
         tglKeluar = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        pimPoli = new javax.swing.JTextField();
 
         mainPanel.setLayout(new java.awt.CardLayout());
 
@@ -121,9 +123,10 @@ private DefaultTableModel tabmode; //membuat table mode
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Form Tampil Transaksi Obat Keluar");
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Search Folder.png"))); // NOI18N
 
@@ -163,7 +166,7 @@ private DefaultTableModel tabmode; //membuat table mode
                         .addGap(0, 0, 0)
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -173,8 +176,8 @@ private DefaultTableModel tabmode; //membuat table mode
             tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tampilPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tampilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,8 +185,8 @@ private DefaultTableModel tabmode; //membuat table mode
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCari, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -225,10 +228,10 @@ private DefaultTableModel tabmode; //membuat table mode
         jLabel3.setText("Kode Obat");
 
         jLabel4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel4.setText("Gudang Tujuan");
+        jLabel4.setText("Poli Tujuan");
 
         jLabel5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel5.setText("Jumlah");
+        jLabel5.setText("Jumlah Obat");
 
         jLabel6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel6.setText("Keterangan");
@@ -238,11 +241,11 @@ private DefaultTableModel tabmode; //membuat table mode
         tKeterangan.setRows(5);
         jScrollPane1.setViewportView(tKeterangan);
 
-        tNamaGudang.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tNamaGudang.setPreferredSize(new java.awt.Dimension(7, 20));
-        tNamaGudang.addActionListener(new java.awt.event.ActionListener() {
+        tNamaPoli.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tNamaPoli.setPreferredSize(new java.awt.Dimension(7, 20));
+        tNamaPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tNamaGudangActionPerformed(evt);
+                tNamaPoliActionPerformed(evt);
             }
         });
 
@@ -295,6 +298,17 @@ private DefaultTableModel tabmode; //membuat table mode
 
         tglKeluar.setFont(new java.awt.Font("Poppins", 2, 12)); // NOI18N
 
+        jLabel7.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel7.setText("PImpinan Poli");
+
+        pimPoli.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        pimPoli.setPreferredSize(new java.awt.Dimension(7, 20));
+        pimPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pimPoliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tambahPanelLayout = new javax.swing.GroupLayout(tambahPanel);
         tambahPanel.setLayout(tambahPanelLayout);
         tambahPanelLayout.setHorizontalGroup(
@@ -303,42 +317,43 @@ private DefaultTableModel tabmode; //membuat table mode
                 .addGap(25, 25, 25)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tambahPanelLayout.createSequentialGroup()
-                        .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
                         .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tambahPanelLayout.createSequentialGroup()
-                        .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-                            .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tambahPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tnamaObat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(kodeKeluar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tkodeObat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tNamaGudang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)))
-                            .addGroup(tambahPanelLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(tglKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTambah2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTambah3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
                     .addGroup(tambahPanelLayout.createSequentialGroup()
                         .addComponent(btnTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBatal1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())
+                    .addGroup(tambahPanelLayout.createSequentialGroup()
+                        .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tambahPanelLayout.createSequentialGroup()
+                                .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(kodeKeluar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tglKeluar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)
+                                .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnTambah2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTambah3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tambahPanelLayout.createSequentialGroup()
+                                .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pimPoli, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tkodeObat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tnamaObat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tNamaPoli, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tJumlah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(90, 90, 90))))))
         );
         tambahPanelLayout.setVerticalGroup(
             tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,18 +383,22 @@ private DefaultTableModel tabmode; //membuat table mode
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tNamaGudang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tNamaPoli, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(btnTambah3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pimPoli, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(57, 57, 57)
                 .addGroup(tambahPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         mainPanel.add(tambahPanel, "card3");
@@ -448,7 +467,7 @@ private DefaultTableModel tabmode; //membuat table mode
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyTyped
-        String sqlPencarian = "select * from tb_obat_keluar where id_obatKeluar like '%"+btnCari.getText()+"%' or nama_obat like '%"+btnCari.getText()+"%' or gudang like '%"+btnCari.getText()+"%'or keterangan like '%"+btnCari.getText()+"%'";
+        String sqlPencarian = "select * from tb_obat_keluar where id_obatKeluar like '%"+btnCari.getText()+"%' or nama_obat like '%"+btnCari.getText()+"%' or bagian like '%"+btnCari.getText()+"%'or keterangan like '%"+btnCari.getText()+"%'";
         pencarian(sqlPencarian);
         lebarKolom();
 
@@ -480,9 +499,9 @@ private DefaultTableModel tabmode; //membuat table mode
         dataTableOut();
     }//GEN-LAST:event_btnBatal1ActionPerformed
 
-    private void tNamaGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaGudangActionPerformed
+    private void tNamaPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaPoliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaGudangActionPerformed
+    }//GEN-LAST:event_tNamaPoliActionPerformed
 
     private void tkodeObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkodeObatActionPerformed
         // TODO add your handling code here:
@@ -505,11 +524,16 @@ private DefaultTableModel tabmode; //membuat table mode
     }//GEN-LAST:event_tnamaObatActionPerformed
 
     private void btnTambah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambah3ActionPerformed
-        jdialogGudang dialog = new jdialogGudang(null, true);
+        jdialogPoli dialog = new jdialogPoli(null, true);
         dialog.setVisible(true);
         
-        tNamaGudang.setText(dialog.mg.getNama_gudang());
+        tNamaPoli.setText(dialog.mg.getNama_bagian());
+        pimPoli.setText(dialog.mg.getPimpinan());
     }//GEN-LAST:event_btnTambah3ActionPerformed
+
+    private void pimPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pimPoliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pimPoliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -529,15 +553,17 @@ private DefaultTableModel tabmode; //membuat table mode
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
     private javax.swing.JLabel kodeKeluar;
     private javax.swing.JPanel mainPanel;
+    public javax.swing.JTextField pimPoli;
     private gs.scroll.win11.ScrollPaneWin11 scrollPaneWin111;
     public javax.swing.JTextField tJumlah;
     private javax.swing.JTextArea tKeterangan;
-    public javax.swing.JTextField tNamaGudang;
+    public javax.swing.JTextField tNamaPoli;
     private gs.component.Table tableOut;
     private javax.swing.JPanel tambahPanel;
     private javax.swing.JPanel tampilPanel;
@@ -548,7 +574,7 @@ private DefaultTableModel tabmode; //membuat table mode
 
 
     private void perbaruiData() {
-        String sql = "UPDATE tb_obat_keluar SET tanggal=?,kode_obat=?,nama_obat=?,gudang=?,jumlah=?,keterangan=? WHERE id_obatKeluar='"+kodeKeluar.getText()+"'";
+        String sql = "UPDATE tb_obat_keluar SET tanggal=?,kode_obat=?,nama_obat=?,bagian=?,jumlah=?,pimpinan=?,keterangan=? WHERE id_obatKeluar='"+kodeKeluar.getText()+"'";
         String tampilan = "dd-MM-yyyy";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
         String tanggal = String.valueOf(fm.format(new Date()));
@@ -557,9 +583,10 @@ private DefaultTableModel tabmode; //membuat table mode
             stat.setString(1, tanggal.toString());
             stat.setString(2, tkodeObat.getText());
             stat.setString(3, tnamaObat.getText());
-            stat.setString(4, tNamaGudang.getText());
+            stat.setString(4, tNamaPoli.getText());
             stat.setString(5, tJumlah.getText());
-            stat.setString(6, tKeterangan.getText());
+            stat.setString(6, pimPoli.getText());
+            stat.setString(7, tKeterangan.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
             
@@ -567,7 +594,7 @@ private DefaultTableModel tabmode; //membuat table mode
             
             resetForm();
             dataTableOut();
-            tNamaGudang.requestFocus();
+            tNamaPoli.requestFocus();
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Data Gagal Diubah "+e);
         }
@@ -580,14 +607,16 @@ private DefaultTableModel tabmode; //membuat table mode
             JOptionPane.showMessageDialog(null, "kode Obat keluar tidak boleh kosong");
         } else if (tnamaObat.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Nama Obat Keluar tidak boleh kosong");
-        } else if (tNamaGudang.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Nama gudang tujuan tidak boleh kosong");
+        } else if (tNamaPoli.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Nama bagian tujuan tidak boleh kosong");
         }else if (tJumlah.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Jumlah Obat Keluar tidak boleh kosong");
+        }else if (pimPoli.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "nama Pimpinan tidak boleh kosong");
         }
         
         else {
-        String sql = "insert into tb_obat_keluar values (?,?,?,?,?,?,?)";
+        String sql = "insert into tb_obat_keluar values (?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -595,14 +624,16 @@ private DefaultTableModel tabmode; //membuat table mode
             stat.setString(2, kodeKeluar.getText());
             stat.setString(3, tkodeObat.getText());
             stat.setString(4, tnamaObat.getText());
-            stat.setString(5, tNamaGudang.getText());
-            stat.setString(6, tJumlah.getText());
-            stat.setString(7, tKeterangan.getText());
+            stat.setString(5, tNamaPoli.getText());
+            stat.setString(6, pimPoli.getText());
+            stat.setString(7, tJumlah.getText());
+            stat.setString(8, tKeterangan.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan");
             //            String refresh = "select * from tb_barang";
             resetForm();
             dataTableOut();
+            idAuto();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan"+e);
         }
@@ -657,7 +688,7 @@ private DefaultTableModel tabmode; //membuat table mode
                 String a = hasil.getString("id_obatKeluar");
                 String b = hasil.getString("kode_obat");
                 String c = hasil.getString("nama_obat");
-                String d = hasil.getString("gudang");
+                String d = hasil.getString("bagian");
                 String jumlah = hasil.getString("jumlah");
                 String keterangan = hasil.getString("keterangan");
                 String[] data = {"",tanggal,a,b,c,d,jumlah,keterangan};
@@ -744,7 +775,7 @@ private DefaultTableModel tabmode; //membuat table mode
         kodeKeluar.setText(c);
         tkodeObat.setText(d);
         tnamaObat.setText(e);
-        tNamaGudang.setText(f);
+        tNamaPoli.setText(f);
         tJumlah.setText(g);
         tKeterangan.setText(h);
         
@@ -756,7 +787,7 @@ private DefaultTableModel tabmode; //membuat table mode
     }
 
     private void dataTableOut() {
-        Object[] Baris = {"No","Tanggal","Kode Obat Keluar","Kode Obat","Nama Obat","Gudang Tujuan","Jumlah","Keterangan"};
+        Object[] Baris = {"No","Tanggal","Kode Obat Keluar","Kode Obat","Nama Obat","Poli Tujuan","Jumlah","Pimpinan Poli","Keterangan"};
         tabmode = new DefaultTableModel(null, Baris);
         tableOut.setModel(tabmode);
         String sql = "select * from tb_obat_keluar order by id_obatKeluar asc";
@@ -768,10 +799,11 @@ private DefaultTableModel tabmode; //membuat table mode
                 String a = hasil.getString("id_obatKeluar");
                 String b = hasil.getString("kode_obat");
                 String c = hasil.getString("nama_obat");
-                String d = hasil.getString("gudang");
+                String d = hasil.getString("bagian");
                 String jumlah = hasil.getString("jumlah");
+                String pim = hasil.getString("pimpinan");
                 String keterangan = hasil.getString("keterangan");
-                String[] data = {"",tanggal,a,b,c,d,jumlah,keterangan};
+                String[] data = {"",tanggal,a,b,c,d,jumlah,pim,keterangan};
                 tabmode.addRow(data);
                 noTable();
                 lebarKolom();
@@ -796,7 +828,8 @@ private DefaultTableModel tabmode; //membuat table mode
         kodeKeluar.setText("");
         tkodeObat.setText("");
         tnamaObat.setText("");
-        tNamaGudang.setText("");
+        tNamaPoli.setText("");
+        pimPoli.setText("");
         tJumlah.setText("");
         tKeterangan.setText("");
     }

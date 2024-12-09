@@ -36,6 +36,7 @@ public class kategoriObat extends javax.swing.JDialog {
         pnTampilKategori = new gs.component.panelBoarder();
         panelBoarder2 = new gs.component.panelBoarder();
         jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         btnTambah = new rojerusan.RSMaterialButtonRectangle();
         btnHapus = new rojerusan.RSMaterialButtonRectangle();
         btnBatal = new rojerusan.RSMaterialButtonRectangle();
@@ -60,16 +61,29 @@ public class kategoriObat extends javax.swing.JDialog {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Kategori Barang");
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBoarder2Layout = new javax.swing.GroupLayout(panelBoarder2);
         panelBoarder2.setLayout(panelBoarder2Layout);
         panelBoarder2Layout.setHorizontalGroup(
             panelBoarder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoarder2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelBoarder2Layout.setVerticalGroup(
             panelBoarder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBoarder2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel12)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -147,7 +161,7 @@ public class kategoriObat extends javax.swing.JDialog {
                     .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -253,6 +267,10 @@ public class kategoriObat extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnBatalActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -302,6 +320,7 @@ public class kategoriObat extends javax.swing.JDialog {
     private rojerusan.RSMaterialButtonRectangle btnHapus;
     private rojerusan.RSMaterialButtonRectangle btnTambah;
     private rojerusan.RSMaterialButtonRectangle btnTambah1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private gs.component.panelBoarder panelBoarder2;

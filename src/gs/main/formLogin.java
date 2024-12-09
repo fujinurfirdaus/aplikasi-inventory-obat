@@ -1,6 +1,7 @@
 package gs.main;
 
 import gs.component.header;
+import gs.panel.panelOrderObat;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,10 +14,13 @@ import koneksi.koneksi;
  * @author Fuji Nur Firdaus
  */
 public class formLogin extends javax.swing.JFrame {
-private Connection conn = new koneksi().configDB();
+
+    private Connection conn = new koneksi().configDB();
+
     public formLogin() {
         initComponents();
-        setBackground(new Color(0,0,0,0));
+        tUser.requestFocus();
+        setBackground(new Color(0, 0, 0, 0));
     }
 
     @SuppressWarnings("unchecked")
@@ -41,24 +45,24 @@ private Connection conn = new koneksi().configDB();
         tUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 153, 204)));
         getContentPane().add(tUser);
-        tUser.setBounds(150, 180, 200, 35);
+        tUser.setBounds(130, 190, 200, 35);
 
         tPass.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tPass.setForeground(new java.awt.Color(0, 153, 204));
         tPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 153, 204)));
         getContentPane().add(tPass);
-        tPass.setBounds(150, 220, 200, 35);
+        tPass.setBounds(130, 230, 200, 35);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Lock_1.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 230, 30, 30);
+        jLabel1.setBounds(90, 240, 30, 30);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/User_2.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 180, 30, 30);
+        jLabel2.setBounds(90, 190, 30, 30);
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 204));
         btnLogin.setText("Login");
@@ -69,43 +73,75 @@ private Connection conn = new koneksi().configDB();
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(110, 300, 250, 50);
+        btnLogin.setBounds(90, 310, 250, 50);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("LOGIN");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(120, 130, 230, 30);
+        jLabel4.setBounds(100, 140, 230, 30);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/login.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Moukeup Login_1.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(-30, -20, 880, 520);
+        jLabel3.setBounds(-30, -20, 880, 510);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private String userLevel;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
+
         String username = tUser.getText();
+//        try {
+//            tUser.requestFocus();
+//            java.sql.Statement stat = conn.createStatement();
+//            ResultSet result=stat.executeQuery ("select * from tb_user where "
+//                + "username='" +tUser.getText()+"'");
+//            if (result.next()) {
+//                if (tPass.getText().equals(result.getString("password"))){
+//                    //new menuUtama().show();
+//                    main mn = new main();
+////                    panelOrderObat panelOrder = new panelOrderObat(username);
+//                    mn.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//                    header.namaOrang.setText(result.getString(3));
+//                    mn.setVisible(true);
+//                    this.dispose();
+//                } else {
+//                    JOptionPane.showMessageDialog(rootPane,"Password Salah");
+//                    tPass.setText("");
+//                    tUser.requestFocus();
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "User Tidak Ditemukan");
+//                tUser.setText("");
+//                tPass.setText("");
+//                tUser.requestFocus();
+//            }
+//        } catch (Exception e){
+//            JOptionPane.showMessageDialog(rootPane, "Gagal");
+//        }
+
         try {
             tUser.requestFocus();
             java.sql.Statement stat = conn.createStatement();
-            ResultSet result=stat.executeQuery ("select * from tb_user where "
-                + "username='" +tUser.getText()+"'");
+            ResultSet result = stat.executeQuery("SELECT * FROM tb_user WHERE username='" + tUser.getText() + "'");
+
             if (result.next()) {
-                if (tPass.getText().equals(result.getString("password"))){
-                    //new menuUtama().show();
-                    main mn = new main();
-                    mn.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    header.namaOrang.setText(result.getString(2));
+                if (tPass.getText().equals(result.getString("password"))) {
+                    // Menyimpan level pengguna
+                    userLevel = result.getString("userLevel");
+                    // Melanjutkan proses login
+                    main mn = new main(userLevel); // Kirim userLevel ke konstruktor
                     mn.setVisible(true);
+                    mn.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    header.namaOrang.setText(result.getString("nama"));
+//                    mn.setVisible(true);
                     this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(rootPane,"Password Salah");
+                    JOptionPane.showMessageDialog(rootPane, "Password Salah");
                     tPass.setText("");
                     tUser.requestFocus();
                 }
@@ -115,8 +151,8 @@ private Connection conn = new koneksi().configDB();
                 tPass.setText("");
                 tUser.requestFocus();
             }
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Gagal");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Gagal: " + e.getMessage());
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e842a6e7-7165-45e8-80e7-ccc9f0052b45">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from tb_obat_masuk]]>
+	</queryString>
+	<field name="tanggal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_obatMasuk" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_obat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_obat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="supplier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jumlah" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tglExp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="27" width="553" height="20" uuid="028d37fc-150e-4936-aab1-0b7c8827837e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Obat Masuk]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="553" height="79" uuid="69b3ed13-3667-4f10-af3a-d825dcb9c62d"/>
+				<imageExpression><![CDATA["D:\\UNINDRA\\SEMESTER 7\\KKP PROJECT\\Klinik\\src\\gs\\image\\Header_20241012_192024_0000 (2).png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="79" height="20" uuid="daeae128-8da8-4cb3-bc8d-4af534adba1c"/>
+				<text><![CDATA[tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="0" width="79" height="20" uuid="6b6ff173-40a7-4903-8139-533a373d3288"/>
+				<text><![CDATA[id_obatMasuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="0" width="79" height="20" uuid="f0218c48-e956-4c38-a5db-a5a4a9d820c8"/>
+				<text><![CDATA[kode_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="79" height="20" uuid="6d757760-d8cb-4dec-a610-fc2146b78709"/>
+				<text><![CDATA[nama_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="79" height="20" uuid="4df8cba7-9f96-4d34-9915-c3ce803eeb39"/>
+				<text><![CDATA[supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="0" width="79" height="20" uuid="a7fe29c0-f820-4092-8ee0-f758a1fd316f"/>
+				<text><![CDATA[jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="0" width="79" height="20" uuid="c244985b-83c2-4285-842a-25a818b2557d"/>
+				<text><![CDATA[tglExp]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="79" height="20" uuid="a0981606-bb15-482d-b5f0-a51a208b25af"/>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="0" width="79" height="20" uuid="3c0a8dc9-cfbe-49dd-8260-680c420b945c"/>
+				<textFieldExpression><![CDATA[$F{id_obatMasuk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="0" width="79" height="20" uuid="67b5df71-255a-489b-9500-637b38af36ef"/>
+				<textFieldExpression><![CDATA[$F{kode_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="79" height="20" uuid="06074354-6274-41b2-b239-ffd8d32be4d0"/>
+				<textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="79" height="20" uuid="853921c1-2817-46a3-b6ef-328b8f42c35a"/>
+				<textFieldExpression><![CDATA[$F{supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="79" height="20" uuid="ee47811f-1e00-4ffa-a3e6-0048fa93f558"/>
+				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="0" width="79" height="20" uuid="c418f376-d1a7-4bba-862a-5d8eb5a39488"/>
+				<textFieldExpression><![CDATA[$F{tglExp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="515" y="0" width="40" height="20" uuid="b561e042-46f5-47e1-bf87-045f92eecdcb"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="435" y="0" width="80" height="20" uuid="059db33b-c56b-45d3-a929-fe6059ca13c4"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="413" y="1" width="42" height="20" uuid="9b65affe-6754-4ca6-b907-8b432223a258"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Depok, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="57" width="142" height="20" uuid="82203679-e6fb-4960-9d07-6e715d9c7f9f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Gudang Farmasi]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="455" y="1" width="100" height="20" uuid="405ef2aa-6fc0-436e-b814-51d2dd20cf6a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

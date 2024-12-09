@@ -28,10 +28,10 @@ public class Menu extends JComponent {
     private MigLayout layout;
     private String[][] menuItems = new String[][]{
         {"Dashboard"},
-        {"Master Data", "Data Obat", "Data Supplier", "Data Gudang","Data Kategori"},
-        {"Data Transaksi", "Obat Masuk", "Obat Keluar"},
-        {"Laporan","Laporan Obat Masuk", "Laporan Obat Keluar", "Laporan Stok Obat", "Laporan Data Supplier"},
-        {"Tentang","Perusahaan", "Anggota"},
+        {"Master Data", "Data Obat", "Data Supplier", "Data Poli/Bagian","Data Kategori"},
+        {"Data Transaksi", "Obat Masuk", "Distribusi Obat","Order Obat"},
+        {"Laporan","Laporan Obat Masuk", "Laporan Distribusi Obat", "Laporan Stok Obat", "Laporan Data Supplier","Laporan User"},
+//        {"Tentang","Perusahaan"},
         {"Data Pengguna"},
         {"Logout"}
         
@@ -95,7 +95,7 @@ public class Menu extends JComponent {
     private void addSubMenu(MenuItem item, int index, int length, int indexZorder) {
         JPanel panel = new JPanel(new MigLayout("wrap 1, fillx, inset 0, gapy 0", "fill"));
         panel.setName(index + "");
-        panel.setBackground(new Color(45,146,150));
+        panel.setBackground(new Color(0,102,51));
         for (int i = 1; i < length; i++) {
             MenuItem subItem = new MenuItem(menuItems[index][i], i, false);
             subItem.addActionListener(new ActionListener() {

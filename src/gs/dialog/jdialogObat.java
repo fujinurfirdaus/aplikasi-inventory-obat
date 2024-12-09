@@ -1,7 +1,7 @@
 
 package gs.dialog;
 
-import gs.component.modelDataObat;
+import gs.modelTabel.modelDataObat;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
@@ -151,6 +151,7 @@ public modelDataObat mo = new modelDataObat();
 
         mo.setKode_obat(tableObt.getModel().getValueAt(row, 1).toString());
         mo.setNama_obat(tableObt.getModel().getValueAt(row, 2).toString());
+        mo.setSatuan(tableObt.getModel().getValueAt(row, 3).toString());
         dispose();
     }//GEN-LAST:event_tableObtMouseClicked
 
@@ -210,7 +211,7 @@ public modelDataObat mo = new modelDataObat();
     }
     
     public void dataTable(){
-        Object[] Baris = {"No","Kode Obat","Nama Obat"};
+        Object[] Baris = {"No","Kode Obat","Nama Obat","satuan"};
         tabmode = new DefaultTableModel(null, Baris);
         tableObt.setModel(tabmode);
         String sql = "select * from tb_obat order by kode_obat asc";
@@ -221,8 +222,9 @@ public modelDataObat mo = new modelDataObat();
                 
                 String kode_obat = hasil.getString("kode_obat");
                 String nama_obat = hasil.getString("nama_obat");
+                String satuan = hasil.getString("satuan");
                 
-                String[] data = {"",kode_obat,nama_obat};
+                String[] data = {"",kode_obat,nama_obat,satuan};
                 tabmode.addRow(data);
                 noTable();
                 

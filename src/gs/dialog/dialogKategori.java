@@ -30,6 +30,7 @@ public modelKategori mk = new modelKategori();
         pnTampilKategori = new gs.component.panelBoarder();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         scrollPaneWin111 = new gs.scroll.win11.ScrollPaneWin11();
         tableKtgr = new gs.component.Table();
         btnCari = new javax.swing.JTextField();
@@ -47,16 +48,27 @@ public modelKategori mk = new modelKategori();
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tabel Kategori Obat");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Close Window.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -166,6 +178,10 @@ public modelKategori mk = new modelKategori();
         pencarian(sqlPencarian);
     }//GEN-LAST:event_btnCariKeyTyped
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +246,7 @@ public modelKategori mk = new modelKategori();
     private javax.swing.JTextField btnCari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private gs.component.panelBoarder pnTampilKategori;
     private gs.scroll.win11.ScrollPaneWin11 scrollPaneWin111;

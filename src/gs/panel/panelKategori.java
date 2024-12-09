@@ -108,9 +108,10 @@ public class panelKategori extends javax.swing.JPanel {
         });
         scrollPaneWin111.setViewportView(tableKategori);
 
-        fsdfd.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        fsdfd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fsdfd.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        fsdfd.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fsdfd.setText("Form Tampil Kategori");
+        fsdfd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         btnCari.setFont(new java.awt.Font("Poppins", 2, 14)); // NOI18N
         btnCari.setForeground(new java.awt.Color(153, 153, 153));
@@ -150,7 +151,7 @@ public class panelKategori extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10))
                     .addComponent(fsdfd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -159,9 +160,9 @@ public class panelKategori extends javax.swing.JPanel {
         pnTampilKategoriLayout.setVerticalGroup(
             pnTampilKategoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTampilKategoriLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(fsdfd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(fsdfd, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTampilKategoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,8 +170,8 @@ public class panelKategori extends javax.swing.JPanel {
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -537,13 +538,13 @@ public class panelKategori extends javax.swing.JPanel {
         String c = tabmode.getValueAt(bar, 2).toString();
         
 
-        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateValue = null;
-        try{
-            dateValue = date.parse((String)tableKategori.getValueAt(bar, 1));
-        } catch (ParseException ex){
-            Logger.getLogger(panelKategori.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+//        Date dateValue = null;
+//        try{
+//            dateValue = date.parse((String)tableKategori.getValueAt(bar, 1));
+//        } catch (ParseException ex){
+//            Logger.getLogger(panelKategori.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         kodeKat.setText(b);
         namaKat.setText(c);

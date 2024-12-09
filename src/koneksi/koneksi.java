@@ -12,7 +12,7 @@ public class koneksi {
     private static Connection con;
     public static Connection configDB(){
         try {
-            String url = "jdbc:mysql://localhost:3306/gudangSehat";
+            String url = "jdbc:mysql://localhost:3306/db_klinik";
             String user = "root";
             String pass = "";
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());

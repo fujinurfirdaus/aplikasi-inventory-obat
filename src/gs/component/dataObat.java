@@ -8,14 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import koneksi.koneksi;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -62,16 +62,15 @@ public class dataObat extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cbxSatuan = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tKeterangan = new javax.swing.JTextArea();
         tKategori = new javax.swing.JTextField();
         tNama = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
         btnTambah2 = new rojerusan.RSMaterialButtonRectangle();
         btnPilihTanggal = new com.toedter.calendar.JDateChooser();
-        kodeObat = new javax.swing.JLabel();
         tkodeKategori = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        btnPilihTanggalexp = new com.toedter.calendar.JDateChooser();
+        tKode = new javax.swing.JTextField();
 
         mainPanel.setLayout(new java.awt.CardLayout());
 
@@ -148,9 +147,10 @@ public class dataObat extends javax.swing.JPanel {
             }
         });
 
-        fsdfd.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        fsdfd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fsdfd.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        fsdfd.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fsdfd.setText("Form Tampil Obat");
+        fsdfd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 102, 102)));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gs/image/Search Folder.png"))); // NOI18N
 
@@ -169,7 +169,7 @@ public class dataObat extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addGap(6, 6, 6))
@@ -180,17 +180,17 @@ public class dataObat extends javax.swing.JPanel {
             panelTampilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTampilLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fsdfd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fsdfd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelTampilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCari, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelTampilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -200,7 +200,7 @@ public class dataObat extends javax.swing.JPanel {
 
         judul.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        judul.setText("Form Tambah Barang");
+        judul.setText("Form Tambah Obat");
 
         btnTambah1.setBackground(new java.awt.Color(38, 80, 115));
         btnTambah1.setText("TAMBAH");
@@ -238,7 +238,7 @@ public class dataObat extends javax.swing.JPanel {
         jLabel5.setText("Jumlah");
 
         jLabel6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel6.setText("Keterangan");
+        jLabel6.setText("Tgl Expired");
 
         jLabel7.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel7.setText("Satuan");
@@ -250,11 +250,6 @@ public class dataObat extends javax.swing.JPanel {
                 cbxSatuanActionPerformed(evt);
             }
         });
-
-        tKeterangan.setColumns(20);
-        tKeterangan.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tKeterangan.setRows(5);
-        jScrollPane1.setViewportView(tKeterangan);
 
         tKategori.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tKategori.setPreferredSize(new java.awt.Dimension(7, 20));
@@ -305,8 +300,6 @@ public class dataObat extends javax.swing.JPanel {
             }
         });
 
-        kodeObat.setFont(new java.awt.Font("Poppins", 2, 12)); // NOI18N
-
         tkodeKategori.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tkodeKategori.setPreferredSize(new java.awt.Dimension(7, 20));
         tkodeKategori.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +310,30 @@ public class dataObat extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel8.setText("Kode Kategori");
+
+        btnPilihTanggalexp.setBackground(new java.awt.Color(255, 255, 255));
+        btnPilihTanggalexp.setToolTipText("Pilih Tanggal");
+        btnPilihTanggalexp.setDateFormatString("dd-MM-yyyy");
+        btnPilihTanggalexp.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        btnPilihTanggalexp.setMaximumSize(new java.awt.Dimension(2147400000, 2147400000));
+        btnPilihTanggalexp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPilihTanggalexpMouseClicked(evt);
+            }
+        });
+        btnPilihTanggalexp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPilihTanggalexpKeyPressed(evt);
+            }
+        });
+
+        tKode.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tKode.setPreferredSize(new java.awt.Dimension(7, 20));
+        tKode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tKodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTambahLayout = new javax.swing.GroupLayout(panelTambah);
         panelTambah.setLayout(panelTambahLayout);
@@ -343,20 +360,23 @@ public class dataObat extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelTambahLayout.createSequentialGroup()
-                                .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tkodeKategori, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(kodeObat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTambahLayout.createSequentialGroup()
+                                .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelTambahLayout.createSequentialGroup()
                                         .addComponent(cbxSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(518, 518, 518))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-                                    .addComponent(tKategori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(610, 610, 610))
+                                    .addGroup(panelTambahLayout.createSequentialGroup()
+                                        .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(tkodeKategori, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                                            .addComponent(tNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tKategori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tKode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addComponent(btnTambah2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelTambahLayout.createSequentialGroup()
-                                .addComponent(btnPilihTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPilihTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPilihTanggalexp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(panelTambahLayout.createSequentialGroup()
@@ -381,7 +401,7 @@ public class dataObat extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kodeObat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tKode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tNama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,8 +426,8 @@ public class dataObat extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(btnPilihTanggalexp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelTambah, "card3");
@@ -460,7 +480,7 @@ public class dataObat extends javax.swing.JPanel {
             ubahDataTabel();
         } else if (btnTambah.getText().equals("TAMBAH")){
             judul.setText("Form Tambah Data Obat");
-            idAuto();
+//            idAuto();
         }
         
     }//GEN-LAST:event_btnTambahActionPerformed
@@ -478,7 +498,7 @@ public class dataObat extends javax.swing.JPanel {
     private void btnTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambah1ActionPerformed
         if (btnTambah1.getText().equals("TAMBAH")){
             btnTambah1.setText("SIMPAN");
-            idAuto();
+//            idAuto();
         }
         else if (btnTambah1.getText().equals("SIMPAN"))
         {
@@ -511,14 +531,6 @@ public class dataObat extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnTambah2ActionPerformed
 
-    private void btnPilihTanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPilihTanggalKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPilihTanggalKeyPressed
-
-    private void btnPilihTanggalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPilihTanggalMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPilihTanggalMouseClicked
-
     private void tableObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableObatMouseClicked
        if (btnTambah.getText().equals("TAMBAH")){
             btnTambah.setText("UBAH");
@@ -533,10 +545,9 @@ public class dataObat extends javax.swing.JPanel {
     }//GEN-LAST:event_tkodeKategoriActionPerformed
 
     private void btnCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyTyped
-        String sqlPencarian = "select * from tb_obat where kode_obat like '%"+btnCari.getText()+"%' or nama_obat like '%"+btnCari.getText()+"%' or nama_kategori like '%"+btnCari.getText()+"%'or kode_kategori like '%"+btnCari.getText()+"%'";
+        String sqlPencarian = "select * from tb_obat where kode_obat like '%"+btnCari.getText()+"%' or nama_obat like '%"+btnCari.getText()+"%' or nama_kategori like '%"+btnCari.getText()+"%'or tglexp like '%"+btnCari.getText()+"%'";
         pencarian(sqlPencarian);
         lebarKolom();
-        
     }//GEN-LAST:event_btnCariKeyTyped
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
@@ -546,10 +557,30 @@ public class dataObat extends javax.swing.JPanel {
     private void cbxSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSatuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxSatuanActionPerformed
+
+    private void btnPilihTanggalexpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPilihTanggalexpMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalexpMouseClicked
+
+    private void btnPilihTanggalexpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPilihTanggalexpKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalexpKeyPressed
+
+    private void tKodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tKodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tKodeActionPerformed
+
+    private void btnPilihTanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPilihTanggalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalKeyPressed
+
+    private void btnPilihTanggalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPilihTanggalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilihTanggalMouseClicked
     
     
     public void dataTable(){
-        Object[] Baris = {"No","Tanggal","Kode Obat","Nama Obat","Kode kategori","Nama Kategori","Jumlah","Satuan","Keterangan"};
+        Object[] Baris = {"No","Tgl Proses","Kode Obat","Nama Obat","Kode kategori","Nama Kategori","Jumlah","Satuan"," Tanggal Expired"};
         tabmode = new DefaultTableModel(null, Baris);
         tableObat.setModel(tabmode);
         String sql = "select * from tb_obat order by kode_obat asc";
@@ -564,8 +595,9 @@ public class dataObat extends javax.swing.JPanel {
                 String nama_kategori = hasil.getString("nama_kategori");
                 String jumlah = hasil.getString("jumlah");
                 String satuan = hasil.getString("satuan");
-                String keterangan = hasil.getString("keterangan");
-                String[] data = {"",tanggal,kode_obat,nama_obat,kode_kategori,nama_kategori,jumlah,satuan,keterangan};
+//                String keterangan = hasil.getString("keterangan");
+                String tanggaled = hasil.getString("tglexp");
+                String[] data = {"",tanggal,kode_obat,nama_obat,kode_kategori,nama_kategori,jumlah,satuan,tanggaled};
                 tabmode.addRow(data);
                 noTable();
                 lebarKolom();
@@ -581,6 +613,7 @@ public class dataObat extends javax.swing.JPanel {
     private javax.swing.JTextField btnCari;
     private rojerusan.RSMaterialButtonRectangle btnHapus;
     private com.toedter.calendar.JDateChooser btnPilihTanggal;
+    private com.toedter.calendar.JDateChooser btnPilihTanggalexp;
     private rojerusan.RSMaterialButtonRectangle btnTambah;
     private rojerusan.RSMaterialButtonRectangle btnTambah1;
     private rojerusan.RSMaterialButtonRectangle btnTambah2;
@@ -595,16 +628,14 @@ public class dataObat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
-    private javax.swing.JLabel kodeObat;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelTambah;
     private javax.swing.JPanel panelTampil;
     private gs.scroll.win11.ScrollPaneWin11 scrollPaneWin111;
     public javax.swing.JTextField tJumlah;
     public javax.swing.JTextField tKategori;
-    private javax.swing.JTextArea tKeterangan;
+    private javax.swing.JTextField tKode;
     private javax.swing.JTextField tNama;
     private gs.component.Table tableObat;
     public javax.swing.JTextField tkodeKategori;
@@ -620,7 +651,7 @@ public class dataObat extends javax.swing.JPanel {
     }
 
     private void simpanData() {
-      if(kodeObat.getText().equals("")){
+      if(tKode.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Kode Obat tidak boleh kosong");
         } else if (tNama.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Nama Obat tidak boleh kosong");
@@ -633,21 +664,23 @@ public class dataObat extends javax.swing.JPanel {
         }
         
         else {
-        String sql = "insert into tb_obat values (?,?,?,?,?,?,?,?)";
-        String tampilan = "dd-MM-yyyy";
+        String sql = "INSERT INTO tb_obat (tanggal, kode_obat, nama_obat, kode_kategori, nama_kategori, jumlah, satuan, tglexp) VALUES (?,?,?,?,?,?,?,?)";
+        String tampilan = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
-        String tanggal = String.valueOf(fm.format(btnPilihTanggal.getDate()));
+        btnPilihTanggal.setDate(new Date());
+        String tanggal = String.valueOf(fm.format(btnPilihTanggalexp.getDate()));
+        String tglexp = String.valueOf(fm.format(btnPilihTanggalexp.getDate()));
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tanggal.toString());
-            stat.setString(2, kodeObat.getText());
+            stat.setString(2, tKode.getText());
             stat.setString(3, tNama.getText());
             stat.setString(4, tkodeKategori.getText());
             stat.setString(5, tKategori.getText());
             stat.setString(6, tJumlah.getText());
             String valueSatuan = cbxSatuan.getSelectedItem().toString();
             stat.setString(7, valueSatuan);
-            stat.setString(8, tKeterangan.getText());
+            stat.setString(8, tglexp.toString());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan");
             //            String refresh = "select * from tb_barang";
@@ -659,37 +692,37 @@ public class dataObat extends javax.swing.JPanel {
         }
     }
 
-    private void idAuto() {
-     PreparedStatement st = null;
-       ResultSet rs = null;
-       String urutan = null;
-       
-       Date now = new Date();
-        SimpleDateFormat tanggal = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat noformat = new SimpleDateFormat("yyMM");
-        String tgl = tanggal.format(now);
-        String no = noformat.format(now);
-        
-        String sql = "SELECT RIGHT (kode_obat,3) AS Nomor FROM tb_obat WHERE kode_obat LIKE 'OB" +no+"%' ORDER BY kode_obat DESC LIMIT 1";
-        
-        try {
-            st =conn.prepareStatement(sql);
-            rs = st.executeQuery();
-            
-            if (rs.next()){
-                int nomor = Integer.parseInt(rs.getString("Nomor"));
-                nomor++;
-                urutan = "OB" + no + String.format("%03d", nomor);
-                kodeObat.setText(urutan);
-            } else{
-                urutan = "OB" +no + "001";
-                kodeObat.setText(urutan);
-            }
-            
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
-    }
+//    private void idAuto() {
+//     PreparedStatement st = null;
+//       ResultSet rs = null;
+//       String urutan = null;
+//       
+//       Date now = new Date();
+//        SimpleDateFormat tanggal = new SimpleDateFormat("yyyy-MM-dd");
+//        SimpleDateFormat noformat = new SimpleDateFormat("yyMM");
+//        String tgl = tanggal.format(now);
+//        String no = noformat.format(now);
+//        
+//        String sql = "SELECT RIGHT (kode_obat,3) AS Nomor FROM tb_obat WHERE kode_obat LIKE 'OB" +no+"%' ORDER BY kode_obat DESC LIMIT 1";
+//        
+//        try {
+//            st =conn.prepareStatement(sql);
+//            rs = st.executeQuery();
+//            
+//            if (rs.next()){
+//                int nomor = Integer.parseInt(rs.getString("Nomor"));
+//                nomor++;
+//                urutan = "OB" + no + String.format("%03d", nomor);
+//                kodeObat.setText(urutan);
+//            } else{
+//                urutan = "OB" +no + "001";
+//                kodeObat.setText(urutan);
+//            }
+//            
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
+//    }
 
     
 
@@ -711,16 +744,21 @@ public class dataObat extends javax.swing.JPanel {
         String h = tabmode.getValueAt(bar, 7).toString();
         String i = tabmode.getValueAt(bar, 8).toString();
 
-        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+//        SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         Date dateValue = null;
+        Date dateValueexp = null;
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//                String formattedDate = dateFormat.format(selectedDate);
         try{
             dateValue = date.parse((String)tableObat.getValueAt(bar, 1));
+            dateValueexp = date.parse((String)tableObat.getValueAt(bar, 8));
         } catch (ParseException ex){
             Logger.getLogger(dataObat.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         btnPilihTanggal.setDate(dateValue);
-        kodeObat.setText(c);
+        tKode.setText(c);
         tNama.setText(d);
         tkodeKategori.setText(e);
         tKategori.setText(f);
@@ -731,7 +769,7 @@ public class dataObat extends javax.swing.JPanel {
         cbxSatuan.addItem(h);
     // Optionally, set the selected item to the newly added item
         cbxSatuan.setSelectedItem(h);
-        tKeterangan.setText(i);
+        btnPilihTanggalexp.setDate(dateValueexp);
         
        
         btnTambah1.setText("PERBAHARUI");
@@ -739,21 +777,22 @@ public class dataObat extends javax.swing.JPanel {
     }
 
     private void perbaruiData() {
-         String sql = "UPDATE tb_obat SET tanggal=?,kode_obat=?,nama_obat=?,kode_kategori=?,nama_kategori=?,jumlah=?,satuan=?,keterangan=? WHERE kode_obat='"+kodeObat.getText()+"'";
-        String tampilan = "dd-MM-yyyy";
+         String sql = "UPDATE tb_obat SET tanggal=?,kode_obat=?,nama_obat=?,kode_kategori=?,nama_kategori=?,jumlah=?,satuan=?,tglexp=? WHERE kode_obat='"+tKode.getText()+"'";
+        String tampilan = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
         String tanggal = String.valueOf(fm.format(btnPilihTanggal.getDate()));
+        String tglexp = String.valueOf(fm.format(btnPilihTanggalexp.getDate()));
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tanggal.toString());
-            stat.setString(2, kodeObat.getText());
+            stat.setString(2, tKode.getText());
             stat.setString(3, tNama.getText());
             stat.setString(4, tkodeKategori.getText());
             stat.setString(5, tKategori.getText());
             stat.setString(6, tJumlah.getText());
             String valueSatuan = cbxSatuan.getSelectedItem().toString();
             stat.setString(7, valueSatuan);
-            stat.setString(8, tKeterangan.getText());
+            stat.setString(8, tglexp.toString());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
             
@@ -772,13 +811,13 @@ public class dataObat extends javax.swing.JPanel {
         btnTambah.setText("TAMBAH");
         fsdfd.setText("Form Tampil Obat");
         btnPilihTanggal.setDate(null);
-        kodeObat.setText("");
+        tKode.setText("");
         tNama.setText("");
         tkodeKategori.setText("");
         tKategori.setText("");
         tJumlah.setText("");
         cbxSatuan.setSelectedItem(null);
-        tKeterangan.setText("");
+        btnPilihTanggalexp.setDate(null);
     }
     
     public modelDataObat mdo = new modelDataObat();
@@ -811,7 +850,7 @@ public class dataObat extends javax.swing.JPanel {
     
 
     private void pencarian(String sql) {
-        Object[] Baris = {"No","Tanggal","Kode Obat","Nama Obat","Kode Ktgr","Nama Ktgr","Jumlah","Satuan","Keterangan"};
+        Object[] Baris = {"No","Tanggal","Kode Obat","Nama Obat","Kode Kategori","Nama Kategori","Jumlah","Satuan","Tanggal Expired"};
         tabmode = new DefaultTableModel(null, Baris);
         tableObat.setModel(tabmode);
         int brs = tableObat.getRowCount();
@@ -829,8 +868,8 @@ public class dataObat extends javax.swing.JPanel {
                 String nama_kategori = hasil.getString("nama_kategori");
                 String jumlah = hasil.getString("jumlah");
                 String satuan = hasil.getString("satuan");
-                String keterangan = hasil.getString("keterangan");
-                String[] data = {"",tanggal,kode_obat,nama_obat,kode_kategori,nama_kategori,jumlah,satuan,keterangan};
+                String exp = hasil.getString("tglexp");
+                String[] data = {"",tanggal,kode_obat,nama_obat,kode_kategori,nama_kategori,jumlah,satuan,exp};
                 tabmode.addRow(data);
                 noTable();
                 lebarKolom();
@@ -849,7 +888,7 @@ public class dataObat extends javax.swing.JPanel {
         column = tableObat.getColumnModel().getColumn(2);
         column.setPreferredWidth(80);
         column = tableObat.getColumnModel().getColumn(3);
-        column.setPreferredWidth(200);
+        column.setPreferredWidth(300);
         column = tableObat.getColumnModel().getColumn(4);
         column.setPreferredWidth(100);
         column = tableObat.getColumnModel().getColumn(5);
@@ -857,8 +896,8 @@ public class dataObat extends javax.swing.JPanel {
         column = tableObat.getColumnModel().getColumn(6);
         column.setPreferredWidth(70);
         column = tableObat.getColumnModel().getColumn(7);
-        column.setPreferredWidth(70);
+        column.setPreferredWidth(120);
         column = tableObat.getColumnModel().getColumn(8);
-        column.setPreferredWidth(350);
+        column.setPreferredWidth(250);
     }
 }

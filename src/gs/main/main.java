@@ -1,23 +1,24 @@
-
 package gs.main;
 
 import gs.component.dataObat;
 import gs.component.formHome;
-//import gs.component.kategoriObat;
 import gs.menu.MenuEvent;
-import gs.panel.panelAnggota;
-import gs.panel.panelDataGudang;
+import gs.panel.panelDataBagian;
 import gs.panel.panelDataSupplier;
 import gs.panel.panelKategori;
+import gs.panel.panelObatKeluar;
+import gs.panel.panelOrderObat;
 import gs.panel.panelPengguna;
 import gs.panel.panelPerusahaan;
 import gs.panel.panelTransaksiKeluar;
 import gs.panel.panelTransaksiMasuk;
+import gs.panel.panelUser;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Locale;
 import javax.security.auth.spi.LoginModule;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,73 +38,81 @@ public class main extends javax.swing.JFrame {
     /**
      * Creates new form main
      */
+    private String userLevel;
     public main() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        Locale.setDefault(new Locale("id", "ID"));
         showForm(new formHome());
+        setupMenuEvent();
+    }
+    public main(String userLevel) {
+        this.userLevel = userLevel;
+        initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        showForm(new formHome());
+        setupMenuEvent();
+    }
+//        menu1.setEvent(new MenuEvent() {
+//            @Override
+//            public void selected(int index, int subIndex) {
+//                if (index == 0) {
+//                    showForm(new formHome());
+//                    //menu master barang
+//                } else if (index == 1){
+//                    if (subIndex == 1) {
+//                        showForm(new dataObat());
+//                    } else if (subIndex == 2) {
+//                        showForm(new panelDataSupplier());
+//                    }else if (subIndex == 3) {
+//                        showForm(new panelDataBagian());
+//                    }else if (subIndex == 4){
+//                        showForm(new panelKategori());
+//                    }
+//                    // menu transaksi
+//                } else if (index == 2){
+//                    if (subIndex == 1){
+//                        showForm(new panelTransaksiMasuk());
+//                    } else if (subIndex == 2){
+//                        showForm(new panelObatKeluar());
+//                    }else if (subIndex == 3){
+//                        showForm(new panelOrderObat());
+//                    }
+//                    //menu laporan
+//                } else if (index == 3){
+//                    if (subIndex == 1){
+//                       tampilLaporanMasuk();
+//                    }else if (subIndex == 2){
+//                        tampilLaporanKeluar();
+//                    }else if (subIndex == 3){
+//                        tampilLaporanStok();
+//                    }else if (subIndex == 4){
+//                        tampilLaporanSupplier();
+//                    }else if (subIndex == 5){
+//                        tampilLaporanUser();
+//                    }
+//                } else if (index == 4){
+//                    showForm(new panelUser());
+//                    
+//                }
+//                
+//                else if (index == 5) {
+//                    dispose();
+//                    formLogin fl = new formLogin();
+//                 fl.setVisible(true);
+//                    
+//                    
+//            }
+//                else {
+//                    showForm(new formHome());
+//                }
+//            }
+//
+//           
+//        });
         
-        menu1.setEvent(new MenuEvent() {
-            @Override
-            public void selected(int index, int subIndex) {
-                if (index == 0) {
-                    showForm(new formHome());
-                    //menu master barang
-                } else if (index == 1){
-                    if (subIndex == 1) {
-                        showForm(new dataObat());
-                    } else if (subIndex == 2) {
-                        showForm(new panelDataSupplier());
-                    }else if (subIndex == 3) {
-                        showForm(new panelDataGudang());
-                    }else if (subIndex == 4){
-                        showForm(new panelKategori());
-                    }
-                    // menu transaksi
-                } else if (index == 2){
-                    if (subIndex == 1){
-                        showForm(new panelTransaksiMasuk());
-                    } else if (subIndex == 2){
-                        showForm(new panelTransaksiKeluar());
-                    }
-                    //menu laporan
-                } else if (index == 3){
-                    if (subIndex == 1){
-                       tampilLaporanMasuk();
-                    }else if (subIndex == 2){
-                        tampilLaporanKeluar();
-                    }else if (subIndex == 3){
-                        tampilLaporanStok();
-                    }else if (subIndex == 4){
-                        tampilLaporanSupplier();
-                    }
-                    
-                    //menu tentang
-                } else if (index == 4){
-                    if (subIndex == 1){
-                        showForm(new panelPerusahaan());
-                    }else if (subIndex == 2){
-                        showForm(new panelAnggota());
-                    }
-                } else if (index == 5){
-                    showForm(new panelPengguna());
-                    
-                }
-                
-                else if (index == 6) {
-                    dispose();
-                    formLogin fl = new formLogin();
-                 fl.setVisible(true);
-                    
-                    
-            }
-                
-                else {
-                    showForm(new formHome());
-                }
-            }
-
-            private void tampilLaporanStok() {
+    
+     private void tampilLaporanStok() {
                 try {
                        String reportPath = "src/gs/laporan/laporanStok.jasper";
                        Connection conn = new koneksi().configDB();
@@ -124,9 +133,9 @@ public class main extends javax.swing.JFrame {
                    }
             }
 
-            private void tampilLaporanSupplier() {
+    private void tampilLaporanSupplier() {
                try {
-                       String reportPath = "src/gs/laporan/laporanSupplier.jasper";
+                       String reportPath = "src/gs/laporan/Supllier.jasper";
                        Connection conn = new koneksi().configDB();
 
                        HashMap<String, Object> parameters = new HashMap<>();
@@ -144,7 +153,7 @@ public class main extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(null,"Error menampilkan Laporan " + e);
                    }
             }
-            private void tampilLaporanMasuk() {
+    private void tampilLaporanMasuk() {
                 try {
                        String reportPath = "src/gs/laporan/laporanMasuk.jasper";
                        Connection conn = new koneksi().configDB();
@@ -164,10 +173,9 @@ public class main extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(null,"Error menampilkan Laporan " + e);
                    }
             }
-            
-            private void tampilLaporanKeluar() {
+    private void tampilLaporanKeluar() {
                 try {
-                       String reportPath = "src/gs/laporan/laporanKeluar.jasper";
+                       String reportPath = "src/gs/laporan/laporanDistribusi.jasper";
                        Connection conn = new koneksi().configDB();
 
                        HashMap<String, Object> parameters = new HashMap<>();
@@ -185,11 +193,26 @@ public class main extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(null,"Error menampilkan Laporan " + e);
                    }
             }
-        });
-        
-    }
-    
-    
+    private void tampilLaporanUser() {
+                     try {
+                       String reportPath = "src/gs/laporan/laporanUser.jasper";
+                       Connection conn = new koneksi().configDB();
+
+                       HashMap<String, Object> parameters = new HashMap<>();
+                       JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
+//                       JasperViewer viewer = new JasperViewer(print, false);
+//                       viewer.setVisible(true);
+                        JRViewer jr=new JRViewer(print); 
+                        body.removeAll();
+                        body.setLayout(new BorderLayout());
+                        body.repaint();
+                        body.add(jr);
+                        body.revalidate();
+
+                   } catch (Exception e) {
+                       JOptionPane.showMessageDialog(null,"Error menampilkan Laporan " + e);
+                   }
+            }
     private void showForm(Component com) {
         body.removeAll();
         body.add(com);
@@ -212,6 +235,7 @@ public class main extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
         jPanel1.add(header1, java.awt.BorderLayout.PAGE_START);
 
+        menu1.setBackground(new java.awt.Color(0, 102, 51));
         menu1.setPreferredSize(new java.awt.Dimension(200, 263));
         jPanel1.add(menu1, java.awt.BorderLayout.LINE_START);
 
@@ -262,10 +286,8 @@ public class main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new main().setVisible(true);
         });
     }
 
@@ -275,6 +297,64 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private gs.menu.Menu menu1;
     // End of variables declaration//GEN-END:variables
+
+    private void setupMenuEvent() {
+         menu1.setEvent(new MenuEvent() {
+            @Override
+            public void selected(int index, int subIndex) {
+                if ("staff".equals(userLevel)) {
+                    // Batasi akses menu untuk staff
+                    if (index == 1 || index == 4) { // Menu master data atau laporan
+                        JOptionPane.showMessageDialog(null, 
+                            "Akses Ditolak: Anda tidak memiliki izin untuk mengakses menu ini.");
+                        return;
+                    }
+                }
+
+                if (index == 0) {
+                    showForm(new formHome());
+                } else if (index == 1) {
+                    if (subIndex == 1) {
+                        showForm(new dataObat());
+                    } else if (subIndex == 2) {
+                        showForm(new panelDataSupplier());
+                    } else if (subIndex == 3) {
+                        showForm(new panelDataBagian());
+                    } else if (subIndex == 4) {
+                        showForm(new panelKategori());
+                    }
+                } else if (index == 2) {
+                    if (subIndex == 1) {
+                        showForm(new panelTransaksiMasuk());
+                    } else if (subIndex == 2) {
+                        showForm(new panelObatKeluar());
+                    } else if (subIndex == 3) {
+                        showForm(new panelOrderObat());
+                    }
+                } else if (index == 3) {
+                    if (subIndex == 1) {
+                        tampilLaporanMasuk();
+                    } else if (subIndex == 2) {
+                        tampilLaporanKeluar();
+                    } else if (subIndex == 3) {
+                        tampilLaporanStok();
+                    } else if (subIndex == 4) {
+                        tampilLaporanSupplier();
+                    } else if (subIndex == 5) {
+                        tampilLaporanUser();
+                    }
+                } else if (index == 4) {
+                    showForm(new panelUser());
+                } else if (index == 5) {
+                    dispose();
+                    formLogin fl = new formLogin();
+                    fl.setVisible(true);
+                } else {
+                    showForm(new formHome());
+                }
+            }
+        });
+    }
 
     
 }

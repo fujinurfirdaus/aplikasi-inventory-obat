@@ -15,10 +15,10 @@ public class TableHeader extends JLabel{
     public TableHeader(String text) {
         super(text);
         setOpaque(true);
-        setBackground(Color.WHITE);
+        setBackground(new Color(45,149,150));
         setHorizontalAlignment(LEADING);
         setFont(new Font("Poppins", 1, 12));
-        setForeground(new Color(102,102,102));
+        setForeground(new Color(255,255,255));
         setBorder(new EmptyBorder(10, 5, 10, 5));
     }
 
